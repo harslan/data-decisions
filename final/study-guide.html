@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISOM H201 Final Exam | Study Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2d5a8b;
+            --accent: #e07c38;
+            --accent-light: #f4a261;
+            --success: #2a9d8f;
+            --surface: #fafbfc;
+            --surface-alt: #f0f4f8;
+            --card: #ffffff;
+            --text: #1a1a2e;
+            --text-muted: #5a6677;
+            --border: #e2e8f0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--surface);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 3rem 2rem 2.5rem;
+            text-align: center;
+        }
+
+        .course-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        header h1 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        header .subtitle {
+            color: rgba(255,255,255,0.85);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .meta-bar {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            background: rgba(0,0,0,0.15);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        .meta-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            display: block;
+            padding: 0.4rem 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            background: var(--surface-alt);
+        }
+
+        /* Main content */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        h2 .icon {
+            font-size: 1.2rem;
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 1.25rem 0 0.6rem;
+            color: var(--text);
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+            font-size: 0.95rem;
+        }
+
+        strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Topic Cards */
+        .topic-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow);
+        }
+
+        .topic-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .topic-card h3 .num {
+            background: var(--primary);
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .skill-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            margin: 1rem 0 0.4rem;
+        }
+
+        /* Lists */
+        ul, ol {
+            padding-left: 1.25rem;
+            margin-bottom: 0.85rem;
+        }
+
+        li {
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+            font-size: 0.9rem;
+        }
+
+        li::marker {
+            color: var(--accent);
+        }
+
+        /* Formula box */
+        .formula {
+            background: var(--surface-alt);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--primary);
+            padding: 0.75rem 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 0.75rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text);
+            overflow-x: auto;
+        }
+
+        /* Insight box */
+        .insight {
+            background: linear-gradient(135deg, rgba(42,157,143,0.08) 0%, rgba(42,157,143,0.03) 100%);
+            border: 1px solid rgba(42,157,143,0.2);
+            border-radius: 8px;
+            padding: 0.85rem 1rem;
+            margin: 0.75rem 0;
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .insight-icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .insight p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: var(--text);
+        }
+
+        /* Review link */
+        .review {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed var(--border);
+        }
+
+        .review strong {
+            color: var(--text-muted);
+        }
+
+        /* Checklist */
+        .checklist {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .checklist h3 {
+            margin-top: 0;
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+
+        .checklist ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            padding: 0.4rem 0;
+            padding-left: 1.75rem;
+            position: relative;
+            border-bottom: 1px solid var(--surface-alt);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+        /* Expect table */
+        .expect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .expect-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .expect-item h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .expect-item p {
+            font-size: 0.825rem;
+            margin: 0;
+        }
+
+        /* CTA box */
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            margin: 2rem 0;
+        }
+
+        .cta-box h3 {
+            color: white;
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.3rem;
+            margin: 0 0 0.5rem;
+        }
+
+        .cta-box p {
+            color: rgba(255,255,255,0.9);
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header {
+                padding: 2rem 1.25rem;
+            }
+
+            .meta-bar {
+                gap: 1rem;
+                padding: 0.85rem 1rem;
+            }
+
+            nav {
+                padding: 0.6rem 1rem;
+            }
+
+            nav a {
+                font-size: 0.7rem;
+                padding: 0.35rem 0.5rem;
+            }
+
+            main {
+                padding: 2rem 1.25rem 3rem;
+            }
+
+            .topic-card {
+                padding: 1.25rem;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            nav, .cta-box {
+                display: none;
+            }
+
+            header {
+                background: white;
+                color: black;
+                border-bottom: 2px solid black;
+            }
+
+            .course-tag {
+                border-color: black;
+                color: black;
+            }
+
+            .meta-bar {
+                background: #f0f0f0;
+            }
+
+            .meta-value {
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span class="course-tag">ISOM H201 Honors</span>
+        <h1>Final Exam Study Guide</h1>
+        <p class="subtitle">Part 1: Canvas Timed Exam</p>
+        
+        <div class="meta-bar">
+            <div class="meta-item">
+                <span class="meta-label">Date</span>
+                <span class="meta-value">Mon, Dec 8</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Time</span>
+                <span class="meta-value">11:00 AM – 12:15 PM</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Duration</span>
+                <span class="meta-value">40 minutes</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Weight</span>
+                <span class="meta-value">35% of course</span>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#topics">Topics</a></li>
+            <li><a href="#correlation">Correlation</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#regression">Regression</a></li>
+            <li><a href="#trees">Trees</a></li>
+            <li><a href="#decision">Decision Analysis</a></li>
+            <li><a href="#data">Data</a></li>
+            <li><a href="#checklist">Checklist</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="topics">
+            <h2><span class="icon">📋</span> What's Covered</h2>
+            <p>The exam covers everything we learned <strong>after Exam 1</strong>. Seven topics in total — here's what you need to know for each.</p>
+        </section>
+
+        <!-- Topic 1 -->
+        <section id="correlation">
+            <div class="topic-card">
+                <h3><span class="num">1</span> Covariance & Correlation</h3>
+                
+                <p class="skill-label">You should be able to:</p>
+                <ul>
+                    <li>Explain what covariance measures (how two variables move together)</li>
+                    <li>Calculate correlation given covariance and standard deviations</li>
+                    <li>Interpret the sign: positive, negative, or zero</li>
+                    <li>Read and interpret a <strong>correlation heatmap</strong></li>
+                    <li>Explain why <strong>correlation ≠ causation</strong> with an example</li>
+                </ul>
+
+                <p class="skill-label">Key formula:</p>
+                <div class="formula">Corr(X, Y) = Cov(X, Y) / (σ<sub>X</sub> × σ<sub>Y</sub>)</div>
+
+                <div class="insight">
+                    <span class="insight-icon">💡</span>
+                    <p>Correlation is unit-free and always between -1 and +1. That's why it's more useful than covariance for comparing relationships.</p>
+                </div>
+
+                <p class="review"><strong>Review:</strong> Covariance & Correlation slides, café beverage example</p>
+            </div>
+        </section>
+
+        <!-- Topic 2 -->
+        <section id="portfolio">
+            <div class="topic-card">
+                <h3><span class="num">2</span> Sums of Random Variables & Portfolio Diversification</h3>
+                
+                <p class="skill-label">You should be able to:</p>
+                <ul>
+                    <li>Calculate expected value: <strong>E(aX + bY) = aE(X) + bE(Y)</strong></li>
+                    <li>Calculate variance: <strong>Var(aX + bY) = a²Var(X) + b²Var(Y) + 2ab·Cov(X,Y)</strong></li>
+                    <li>Understand the special case when X and Y are <strong>independent</strong></li>
+                    <li>Explain why <strong>diversification reduces risk</strong></li>
+                    <li>Interpret the "bullet" curve (risk-return tradeoff)</li>
+                </ul>
+
+                <p class="skill-label">Key formulas:</p>
+                <div class="formula">E(aX + bY) = aE(X) + bE(Y)<br>Var(aX + bY) = a²Var(X) + b²Var(Y) + 2ab·σ<sub>X</sub>σ<sub>Y</sub>·Corr(X,Y)</div>
+
+                <div class="insight">
+                    <span class="insight-icon">💡</span>
+                    <p>The mean of a sum is simple (just add). The variance depends on correlation — <strong>negative correlation reduces total variance</strong>. That's the power of diversification.</p>
+                </div>
+
+                <p class="review"><strong>Review:</strong> Boeing/GM investment example, risk reduction graphs</p>
+            </div>
+        </section>
+
+        <!-- Topic 3 -->
+        <section id="regression">
+            <div class="topic-card">
+                <h3><span class="num">3</span> Regression</h3>
+                
+                <p class="skill-label">You should be able to:</p>
+                <ul>
+                    <li>Interpret the <strong>slope</strong> (change in Y for 1-unit change in X)</li>
+                    <li>Interpret the <strong>intercept</strong> (predicted Y when X = 0)</li>
+                    <li>Make predictions using a regression equation</li>
+                    <li>Interpret <strong>R²</strong> (percentage of variation explained)</li>
+                    <li>Calculate a <strong>residual</strong> (Actual - Predicted)</li>
+                    <li>Explain what <strong>Lasso regression</strong> does (shrinks coefficients, helps feature selection)</li>
+                </ul>
+
+                <p class="skill-label">Key formulas:</p>
+                <div class="formula">Predicted Y = Intercept + Slope × X<br>Residual = Actual Y - Predicted Y</div>
+
+                <div class="insight">
+                    <span class="insight-icon">💡</span>
+                    <p>R² = 0.72 means 72% of the variation in Y is explained by the model. The other 28% is unexplained (residual variation).</p>
+                </div>
+
+                <p class="review"><strong>Review:</strong> Regression notebooks, scikit-learn examples</p>
+            </div>
+        </section>
+
+        <!-- Topic 4 -->
+        <section id="trees">
+            <div class="topic-card">
+                <h3><span class="num">4</span> Decision Trees & Random Forest</h3>
+                
+                <p class="skill-label">You should be able to:</p>
+                <ul>
+                    <li>Follow a decision tree to make a prediction</li>
+                    <li>Understand that the <strong>first split</strong> uses the most important feature</li>
+                    <li>Explain what <strong>overfitting</strong> means (high training accuracy, low test accuracy)</li>
+                    <li>Explain why limiting tree depth improves generalization</li>
+                    <li>Explain what a <strong>Random Forest</strong> is (ensemble of many trees)</li>
+                    <li>Understand why ensembles perform better (reduce variance, more robust)</li>
+                </ul>
+
+                <div class="insight">
+                    <span class="insight-icon">💡</span>
+                    <p>A single deep tree memorizes training data (overfits). Random Forest builds many trees on random subsets and averages — this reduces overfitting.</p>
+                </div>
+
+                <p class="review"><strong>Review:</strong> <a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/" target="_blank">r2d3.us visual intro</a>, ensemble methods notebook</p>
+            </div>
+        </section>
+
+        <!-- Topic 5 -->
+        <section id="decision">
+            <div class="topic-card">
+                <h3><span class="num">5</span> Decision Analysis</h3>
+                
+                <p class="skill-label">You should be able to:</p>
+                <ul>
+                    <li>Read a decision tree with probabilities and payoffs</li>
+                    <li>Calculate <strong>expected value</strong> at chance nodes</li>
+                    <li>Apply <strong>Bayes' theorem</strong> to update probabilities</li>
+                    <li>Determine the optimal decision strategy</li>
+                    <li>Understand the <strong>value of information</strong></li>
+                </ul>
+
+                <p class="skill-label">Key concepts (from Global Petroleum):</p>
+                <div class="formula">Prior: P(Oil) = 0.30<br>Conditional: P(Positive | Oil) = 0.80<br>Joint: P(Positive AND Oil) = P(Positive | Oil) × P(Oil)<br>Posterior: P(Oil | Positive) = P(Oil AND Positive) / P(Positive)</div>
+
+                <div class="insight">
+                    <span class="insight-icon">💡</span>
+                    <p>Bayes' theorem lets you update your beliefs with new evidence. The seismic test changes P(Oil) from 30% to 77% if positive, or down to 8% if negative.</p>
+                </div>
+
+                <p class="review"><strong>Review:</strong> Global Petroleum Corporation exercise — understand each step</p>
+            </div>
+        </section>
+
+        <!-- Topic 6 -->
+        <section id="data">
+            <div class="topic-card">
+                <h3><span class="num">6</span> Data Handling & Visualization</h3>
+                
+                <p class="skill-label">You should be able to:</p>
+                <ul>
+                    <li>Understand basic <strong>Pandas</strong> operations (loading, selecting, filtering)</li>
+                    <li>Interpret a <strong>scatter plot</strong> (direction, strength, outliers)</li>
+                    <li>Interpret a <strong>correlation heatmap</strong> (which variables relate?)</li>
+                    <li>Know when to use <strong>Seaborn</strong> for visualization</li>
+                </ul>
+
+                <div class="insight">
+                    <span class="insight-icon">💡</span>
+                    <p>In a heatmap: dark colors = strong correlation, light = weak. Red/blue often indicate positive/negative.</p>
+                </div>
+
+                <p class="review"><strong>Review:</strong> Pandas notebooks, visualization examples</p>
+            </div>
+        </section>
+
+        <!-- Topic 7 -->
+        <section>
+            <div class="topic-card">
+                <h3><span class="num">7</span> Train/Test Split & Overfitting</h3>
+                
+                <p class="skill-label">You should be able to:</p>
+                <ul>
+                    <li>Explain <strong>why</strong> we split data into training and test sets</li>
+                    <li>Recognize <strong>overfitting</strong> (great on training, poor on test)</li>
+                    <li>Recognize <strong>underfitting</strong> (poor on both)</li>
+                    <li>Explain how Lasso or limiting tree depth prevents overfitting</li>
+                </ul>
+
+                <div class="insight">
+                    <span class="insight-icon">💡</span>
+                    <p>A model that memorizes training data won't work on new data. Test data simulates "the future" — it tells you if your model generalizes.</p>
+                </div>
+
+                <p class="review"><strong>Review:</strong> Train/test split in scikit-learn notebooks</p>
+            </div>
+        </section>
+
+        <!-- What to Expect -->
+        <section id="expect">
+            <h2><span class="icon">📝</span> What to Expect</h2>
+            
+            <div class="expect-grid">
+                <div class="expect-item">
+                    <h4>Conceptual</h4>
+                    <p>"Why does diversification reduce risk?"</p>
+                </div>
+                <div class="expect-item">
+                    <h4>Calculation</h4>
+                    <p>"Calculate the correlation given these values..."</p>
+                </div>
+                <div class="expect-item">
+                    <h4>Interpretation</h4>
+                    <p>"What does this regression coefficient mean?"</p>
+                </div>
+                <div class="expect-item">
+                    <h4>Decision Analysis</h4>
+                    <p>"What is the expected value of this decision?"</p>
+                </div>
+            </div>
+
+            <p><strong>Format:</strong> One question at a time, no backtracking. Calculator allowed.</p>
+        </section>
+
+        <!-- Checklist -->
+        <section id="checklist">
+            <h2><span class="icon">✅</span> Self-Check Before the Exam</h2>
+            
+            <div class="checklist">
+                <h3>Correlation & Covariance</h3>
+                <ul>
+                    <li>Can I calculate correlation from covariance and standard deviations?</li>
+                    <li>Can I explain why correlation ≠ causation?</li>
+                    <li>Can I read a correlation heatmap?</li>
+                </ul>
+            </div>
+
+            <div class="checklist" style="margin-top: 1rem;">
+                <h3>Random Variables & Portfolios</h3>
+                <ul>
+                    <li>Can I calculate E(aX + bY)?</li>
+                    <li>Can I calculate Var(aX + bY) using the full formula?</li>
+                    <li>Can I explain why negative correlation helps diversification?</li>
+                </ul>
+            </div>
+
+            <div class="checklist" style="margin-top: 1rem;">
+                <h3>Regression</h3>
+                <ul>
+                    <li>Can I interpret slope and intercept?</li>
+                    <li>Can I make a prediction from a regression equation?</li>
+                    <li>Can I explain what R² tells us?</li>
+                </ul>
+            </div>
+
+            <div class="checklist" style="margin-top: 1rem;">
+                <h3>Decision Trees & Random Forest</h3>
+                <ul>
+                    <li>Can I follow a decision tree to classify a new observation?</li>
+                    <li>Can I explain what overfitting is?</li>
+                    <li>Can I explain why Random Forest beats a single tree?</li>
+                </ul>
+            </div>
+
+            <div class="checklist" style="margin-top: 1rem;">
+                <h3>Decision Analysis</h3>
+                <ul>
+                    <li>Can I calculate expected value at a chance node?</li>
+                    <li>Can I apply Bayes' theorem to update probabilities?</li>
+                    <li>Can I determine the optimal strategy from a decision tree?</li>
+                </ul>
+            </div>
+
+            <div class="checklist" style="margin-top: 1rem;">
+                <h3>Data & Modeling</h3>
+                <ul>
+                    <li>Can I explain why we use train/test split?</li>
+                    <li>Can I interpret a scatter plot?</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-box">
+            <h3>You've Got This</h3>
+            <p>Review the examples. Understand the "why." Trust your preparation.</p>
+        </div>
+
+        <!-- How to Prepare -->
+        <section>
+            <h2><span class="icon">📚</span> How to Prepare</h2>
+            <ol>
+                <li><strong>Review slides and notebooks</strong> — especially examples we worked through</li>
+                <li><strong>Redo calculations by hand</strong> — correlation, expected value, variance</li>
+                <li><strong>Understand the "why"</strong> — not just formulas, but what they mean</li>
+                <li><strong>Practice interpretation</strong> — regression output, heatmaps, decision trees</li>
+                <li><strong>Review Global Petroleum</strong> — understand each step of Bayes' theorem</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>ISOM H201 — Honors Data and Decision Analysis</strong></p>
+        <p>Suffolk University | Sawyer Business School | Fall 2025</p>
+        <p style="margin-top: 0.75rem;">Questions? <a href="mailto:harslan@suffolk.edu">harslan@suffolk.edu</a> | 617-230-3653</p>
+    </footer>
+</body>
+</html>

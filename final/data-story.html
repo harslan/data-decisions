@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISOM H201 Final | Your First Data Story</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2d5a8b;
+            --accent: #e94560;
+            --accent-light: #ff6b6b;
+            --gold: #f4a261;
+            --teal: #2a9d8f;
+            --surface: #fafbfc;
+            --surface-alt: #f0f4f8;
+            --card: #ffffff;
+            --text: #1a1a2e;
+            --text-muted: #5a6677;
+            --border: #e2e8f0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--surface);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 3rem 2rem 2.5rem;
+            text-align: center;
+        }
+
+        .course-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        header h1 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        header .subtitle {
+            color: rgba(255,255,255,0.85);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .meta-bar {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            background: rgba(0,0,0,0.15);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        .meta-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--gold);
+        }
+
+        /* Main content */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        h2 .icon {
+            font-size: 1.2rem;
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 1.25rem 0 0.6rem;
+            color: var(--text);
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+            font-size: 0.95rem;
+        }
+
+        strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .card-accent {
+            border-left: 3px solid var(--accent);
+        }
+
+        .card-gold {
+            border-left: 3px solid var(--gold);
+            background: rgba(244, 162, 97, 0.05);
+        }
+
+        .card-teal {
+            border-left: 3px solid var(--teal);
+            background: rgba(42, 157, 143, 0.05);
+        }
+
+        .card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .card p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Dataset cards */
+        .dataset-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        @media (min-width: 550px) {
+            .dataset-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .dataset-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: var(--shadow);
+            transition: all 0.2s ease;
+        }
+
+        .dataset-card:hover {
+            border-color: var(--primary-light);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .dataset-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .dataset-card p {
+            font-size: 0.875rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .dataset-card ul {
+            margin: 0;
+            padding-left: 1.1rem;
+        }
+
+        .dataset-card li {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.2rem;
+        }
+
+        .dataset-link {
+            display: inline-block;
+            margin-top: 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .dataset-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Lists */
+        ul, ol {
+            padding-left: 1.25rem;
+            margin-bottom: 0.85rem;
+        }
+
+        li {
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+            font-size: 0.9rem;
+        }
+
+        li::marker {
+            color: var(--accent);
+        }
+
+        /* Table */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+            background: var(--card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--surface-alt);
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        td {
+            color: var(--text-muted);
+        }
+
+        /* CTA box */
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            margin: 2rem 0;
+        }
+
+        .cta-box h3 {
+            color: white;
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.3rem;
+            margin: 0 0 0.5rem;
+        }
+
+        .cta-box p {
+            color: rgba(255,255,255,0.9);
+            margin: 0;
+        }
+
+        /* Insight/Callout */
+        .callout {
+            display: flex;
+            gap: 0.6rem;
+            padding: 1rem 1.25rem;
+            background: rgba(244, 162, 97, 0.1);
+            border: 1px solid rgba(244, 162, 97, 0.3);
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .callout-icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: var(--text);
+        }
+
+        /* Links */
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        footer a {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 500px) {
+            header {
+                padding: 2rem 1.25rem;
+            }
+
+            .meta-bar {
+                gap: 1rem;
+                padding: 0.85rem 1rem;
+            }
+
+            main {
+                padding: 2rem 1.25rem 3rem;
+            }
+
+            .card {
+                padding: 1.25rem;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            header {
+                background: white;
+                color: black;
+                border-bottom: 2px solid black;
+            }
+
+            .course-tag {
+                border-color: black;
+                color: black;
+            }
+
+            .meta-bar {
+                background: #f0f0f0;
+            }
+
+            .meta-value {
+                color: black;
+            }
+
+            .cta-box {
+                background: #f0f0f0;
+                color: black;
+            }
+
+            .cta-box h3, .cta-box p {
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span class="course-tag">ISOM H201 Honors</span>
+        <h1>Your First Data Story</h1>
+        <p class="subtitle">Final Exam — Part 2</p>
+        
+        <div class="meta-bar">
+            <div class="meta-item">
+                <span class="meta-label">Released</span>
+                <span class="meta-value">Dec 8</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Due</span>
+                <span class="meta-value">Dec 12, 11:59 PM</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Weight</span>
+                <span class="meta-value">15% of Course</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2><span class="icon">📖</span> The Assignment</h2>
+            
+            <p>You've spent this semester learning powerful tools: optimization, regression, decision analysis, Python, and data visualization. Now it's time to use them on your own.</p>
+            
+            <p><strong>Your task:</strong> Find a question worth answering. Analyze data to answer it. Tell the story of what you found. Make a recommendation.</p>
+            
+            <p>This is your first real data story — something you could show to a future employer or talk about in an interview. Make it count.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">📦</span> What You'll Submit</h2>
+            
+            <div class="card card-accent">
+                <h4>1. Google Colab Notebook</h4>
+                <p>Your analysis, with code and explanations. Should be clean, organized, and easy to follow. Include markdown cells that explain your thinking — don't just dump code.</p>
+            </div>
+            
+            <div class="card card-accent">
+                <h4>2. One-Page Executive Summary</h4>
+                <p>A PDF or Google Doc that a non-technical person could read and understand. What question did you ask? What did you find? What do you recommend? Keep it to one page.</p>
+            </div>
+            
+            <p style="margin-top: 1rem;"><strong>Submit both via Canvas</strong> by December 12 at 11:59 PM.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">📊</span> Choose Your Data</h2>
+            
+            <p>You have three options. Pick the one that excites you most.</p>
+            
+            <div class="dataset-grid">
+                <div class="dataset-card">
+                    <h4>🇧🇷 Brazilian E-Commerce (Olist)</h4>
+                    <p>100,000 orders from a Brazilian marketplace. Products, sellers, customers, reviews, delivery.</p>
+                    <ul>
+                        <li>What predicts customer satisfaction?</li>
+                        <li>Which categories perform best?</li>
+                        <li>How does delivery affect reviews?</li>
+                    </ul>
+                    <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce" target="_blank" class="dataset-link">View on Kaggle →</a>
+                </div>
+                
+                <div class="dataset-card">
+                    <h4>🏠 Boston Airbnb</h4>
+                    <p>Listings, reviews, and calendar data for Boston rentals. Great for pricing and location analysis.</p>
+                    <ul>
+                        <li>What drives listing prices?</li>
+                        <li>Which neighborhoods are profitable?</li>
+                        <li>What makes a highly-rated host?</li>
+                    </ul>
+                    <a href="https://www.kaggle.com/datasets/airbnb/boston" target="_blank" class="dataset-link">View on Kaggle →</a>
+                </div>
+            </div>
+            
+            <div class="card card-gold">
+                <h4>🔍 Option 3: Bring Your Own</h4>
+                <p>Have a dataset you're curious about? Sports stats, music, climate, finance — you can use it. Just make sure it has enough data (at least a few hundred rows) and is from a legitimate source.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="icon">✅</span> Requirements</h2>
+            
+            <p>Your analysis must include:</p>
+            
+            <ul>
+                <li><strong>A clear question</strong> — What are you trying to figure out?</li>
+                <li><strong>At least one technique from the course</strong> — Regression, optimization, decision trees, or forecasting</li>
+                <li><strong>2-3 visualizations</strong> — Charts that help tell your story. Label them clearly.</li>
+                <li><strong>A recommendation or insight</strong> — So what? What should someone do with this?</li>
+            </ul>
+            
+            <div class="callout">
+                <span class="callout-icon">💡</span>
+                <p><strong>Quality over complexity.</strong> A thoughtful, simple analysis beats a sloppy complicated one. If you do a clean regression and explain it well, that's great.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="icon">📝</span> Your Notebook Should...</h2>
+            
+            <ul>
+                <li><strong>Start with context</strong> — What's the question? Why does it matter?</li>
+                <li><strong>Show your exploration</strong> — What does the data look like?</li>
+                <li><strong>Present your analysis</strong> — What technique did you use? What did you find?</li>
+                <li><strong>Include visualizations</strong> — Charts that support your story</li>
+                <li><strong>End with insight</strong> — What's the takeaway?</li>
+            </ul>
+            
+            <p>Use markdown cells to explain your thinking. Someone should be able to follow your logic without running the code.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">📄</span> Your Executive Summary Should...</h2>
+            
+            <p>Imagine presenting to a manager who doesn't know Python. In one page:</p>
+            
+            <ul>
+                <li><strong>State the question</strong> — What did you investigate?</li>
+                <li><strong>Summarize the approach</strong> — How did you analyze it? (One sentence is fine)</li>
+                <li><strong>Present key findings</strong> — What did you discover? Include 1-2 visuals if helpful.</li>
+                <li><strong>Make a recommendation</strong> — Based on your analysis, what should someone do?</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span class="icon">⚖️</span> Grading</h2>
+            
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Weight</th>
+                            <th>What I'm Looking For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Question & Dataset</strong></td>
+                            <td>15%</td>
+                            <td>Clear, interesting question. Appropriate data choice.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Technical Execution</strong></td>
+                            <td>35%</td>
+                            <td>Correct use of course techniques. Code that works.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Visualizations</strong></td>
+                            <td>20%</td>
+                            <td>Clear, relevant charts. Properly labeled.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Insight & Recommendation</strong></td>
+                            <td>20%</td>
+                            <td>Logical conclusions. Actionable takeaway.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Presentation Quality</strong></td>
+                            <td>10%</td>
+                            <td>Clean notebook. Professional summary.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="icon">🤝</span> What's Allowed</h2>
+            
+            <div class="card card-teal">
+                <h4>You CAN:</h4>
+                <ul>
+                    <li>Use class notes, slides, and our Colab notebooks as reference</li>
+                    <li>Use Google, Stack Overflow, and documentation</li>
+                    <li>Use AI tools (ChatGPT, Claude) to help learn and debug — but you must understand everything you submit</li>
+                    <li>Discuss general approaches with classmates</li>
+                </ul>
+            </div>
+            
+            <div class="card card-accent">
+                <h4>You CANNOT:</h4>
+                <ul>
+                    <li>Copy another student's work</li>
+                    <li>Submit code you don't understand</li>
+                    <li>Share your notebook with other students</li>
+                </ul>
+            </div>
+            
+            <p>If you use AI assistance, note it briefly. This is about learning — I just want honesty.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">🪞</span> Reflection</h2>
+            
+            <p>At the end of your notebook, add a short reflection (3-5 sentences) answering:</p>
+            
+            <div class="card card-gold">
+                <p style="margin:0;"><strong>"What was the most challenging part of this analysis, and how did you work through it?"</strong></p>
+            </div>
+            
+            <p>This helps me understand your process, not just your output.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">📁</span> Optional: Start Your Portfolio</h2>
+            
+            <p>If you want to begin building a professional portfolio, you're welcome to post your notebook to a GitHub repository. This is completely optional and won't affect your grade — but it's a nice way to showcase your work for future internships.</p>
+        </section>
+
+        <div class="cta-box">
+            <h3>This Is Your Story to Tell</h3>
+            <p>You have the tools. You have the data. Show me what you can discover.</p>
+        </div>
+
+        <section>
+            <h2><span class="icon">🚀</span> Getting Started</h2>
+            
+            <ol>
+                <li><strong>Pick your dataset</strong> — Olist, Airbnb, or your own</li>
+                <li><strong>Explore it</strong> — Load it into Colab, look around</li>
+                <li><strong>Find a question</strong> — What would be useful to know?</li>
+                <li><strong>Analyze</strong> — Apply a technique from class</li>
+                <li><strong>Visualize</strong> — Create charts that tell the story</li>
+                <li><strong>Write it up</strong> — Clean notebook + one-page summary</li>
+                <li><strong>Submit</strong> — Canvas by Dec 12, 11:59 PM</li>
+            </ol>
+            
+            <p>You've got four days. That's enough. Start exploring today.</p>
+        </section>
+
+        <section>
+            <h2><span class="icon">💬</span> Questions?</h2>
+            
+            <p>If you're stuck — reach out. I want you to succeed.</p>
+            
+            <p><strong>Email:</strong> <a href="mailto:harslan@suffolk.edu">harslan@suffolk.edu</a> (include "ISOM H201" in subject)<br>
+            <strong>Phone:</strong> 617-230-3653</p>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>ISOM H201 — Honors Data and Decision Analysis</strong></p>
+        <p>Suffolk University | Sawyer Business School | Fall 2025</p>
+    </footer>
+</body>
+</html>
